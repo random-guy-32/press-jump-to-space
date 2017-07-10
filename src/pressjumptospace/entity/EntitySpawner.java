@@ -5,6 +5,7 @@ import pressjumptospace.entity.meta.Entity;
 import pressjumptospace.entity.npc.MotionlessBlob;
 import pressjumptospace.entity.npc.RollingPlatform;
 import pressjumptospace.entity.npc.SimpleMook;
+import pressjumptospace.entity.projectile.SmallBullet;
 import pressjumptospace.level.Level;
 import pressjumptospace.render.Renderable;
 import pressjumptospace.render.Sprite;
@@ -43,6 +44,20 @@ public class EntitySpawner implements Renderable {
     }
 
     public void spawn() {
+        /*
+        try {
+            Entity e = (Entity) this.type.newInstance();
+
+            e.x = this.x;
+            e.y = this.y;
+
+            Util.log(e.dir);
+        }
+        catch (InstantiationException|IllegalAccessException ex) {
+            Util.err("Unknown entity type '" + this.type.getName() + "'. Cannot spawn entity at (" + this.x + ", " + this.y + ").");
+        }
+        */
+
         switch (this.type.getName()) {
             case "pressjumptospace.entity.npc.SimpleMook":
                 Level.entities.add(new SimpleMook(this.x, this.y, (byte) 3, 1));
@@ -59,8 +74,12 @@ public class EntitySpawner implements Renderable {
             case "pressjumptospace.entity.item.Battery":
                 Level.entities.add(new Battery(this.x, this.y));
                 break;
+            case "pressjumptospace.entity.projectile.SmallBullet":
+                Level.entities.add(new SmallBullet(this.x, this.y, (byte) 3));
+                break;
             default:
-                Util.err("Unknown entity type. Cannot spawn entity at (" + this.x + "," + this.y + ").");
+                Util.err("Unknown entity type '" + this.type.getName() + "'. Cannot spawn entity at (" + this.x + ", " + this.y + ").");
         }
+
     }
 }

@@ -1,4 +1,7 @@
-package pressjumptospace.tile.meta;
+package pressjumptospace.tile.meta.tile_data;
+
+import pressjumptospace.tile.meta.Material;
+import pressjumptospace.tile.meta.Tile;
 
 /**
  * this is dumb

@@ -1,5 +1,6 @@
 package pressjumptospace.main;
 
+import com.sun.javafx.scene.control.skin.ColorPalette;
 import pressjumptospace.entity.EntityHitbox;
 import pressjumptospace.entity.LevelObjective;
 import pressjumptospace.entity.meta.Enemy;
@@ -18,6 +19,8 @@ import pressjumptospace.util.Physics;
 import pressjumptospace.util.Util;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Game {
     public static final int TPS = 30;
@@ -41,11 +44,22 @@ public abstract class Game {
         Player player = Controls.player;
         Level.entities.add(player);
 
+        // initiating canvas stuff
+        Graphics2D gPalette = (Graphics2D) paletteCanvas.getGraphics();
+        Image bufferImagePalette = (BufferedImage) paletteCanvas.createImage(paletteCanvas.objWidth, paletteCanvas.objHeight);
+        Graphics bufferGraphicsPalette = bufferImagePalette.getGraphics();
+
+        Graphics2D gGame = (Graphics2D) gameCanvas.getGraphics();
+        Image bufferImageGame = (BufferedImage) gameCanvas.createImage(gameCanvas.getWidth(), gameCanvas.getHeight());
+        Graphics bufferGraphicsGame = bufferImageGame.getGraphics();
+
+        // main loop
         while (Game.running) {
             // Util.log("TICK.");
 
             gameCanvas.cursor = gameCanvas.getMousePosition();
             if (Game.mode == 0 && gameCanvas.cursor != null) {
+                // editing mode
                 if (LevelEditor.selectedTile != null) {
                     LevelEditor.selectedTile.sprite.x = Util.roundToN(gameCanvas.cursor.x, 16);
                     LevelEditor.selectedTile.sprite.y = Util.roundToN(gameCanvas.cursor.y, 16);
@@ -72,6 +86,7 @@ public abstract class Game {
                 }
             }
             else if (Game.mode == 1) {
+                // playing mode
                 for (int i = 0; i < Level.entities.size(); i++) {
                     Entity entity = Level.entities.get(i);
 
@@ -152,11 +167,35 @@ public abstract class Game {
 
             //	System.out.println("POSX:" + Controls.player.x + ", POSY:" + Controls.player.y);
 
-            gameCanvas.repaint();
-            paletteCanvas.repaint();
+            renderGame(bufferGraphicsGame, bufferImageGame, gGame);
+            if (mode == 0) {
+                renderPalette(bufferGraphicsPalette, bufferImagePalette, gPalette);
+            }
+
             Game.age++;
             Thread.sleep(1000 / Game.TPS);
         }
+    }
+
+    public static void renderGame(Graphics bufferGraphics, Image bufferImage, Graphics2D g) {
+        bufferGraphics.setColor(Color.BLACK);
+        bufferGraphics.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+
+        gameCanvas.render(bufferGraphics);
+
+        g.drawImage(bufferImage, 0, 0, null);
+
+        // gameCanvas.repaint();
+    }
+    public static void renderPalette(Graphics bufferGraphics, Image bufferImage, Graphics2D g) {
+        bufferGraphics.setColor(Color.BLACK);
+        bufferGraphics.fillRect(0, 0, paletteCanvas.objWidth, paletteCanvas.objHeight);
+
+        paletteCanvas.render(bufferGraphics);
+
+        g.drawImage(bufferImage, 0, 0, null);
+
+        // paletteCanvas.repaint();
     }
 
     public static void toggleMode() {

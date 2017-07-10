@@ -4,7 +4,7 @@ import pressjumptospace.entity.player.Controls;
 import pressjumptospace.entity.projectile.SmallBullet;
 import pressjumptospace.tile.meta.Material;
 import pressjumptospace.tile.meta.Turret;
-import pressjumptospace.tile.tileentity.TurretTileDataContainer;
+import pressjumptospace.tile.tile_entity.TurretTileDataContainer;
 
 public class HorizontalSmallBulletTurret extends Turret {
     public HorizontalSmallBulletTurret() {

@@ -1,6 +1,7 @@
 package pressjumptospace.tile.meta;
 
 import pressjumptospace.entity.meta.Entity;
+import pressjumptospace.tile.meta.tile_data.TileWithDataContainer;
 
 abstract public class Turret extends TileWithDataContainer {
     public Turret(boolean[] solid_, int[] hurts_, Material material_, String sprite_, String name_, Class bulletType_, boolean[] directions_, boolean willFollowEntity_, Entity targetEntity_, boolean shootsThroughSolidTile_, boolean shootsThroughSolidEntity_, int fireCooldown_, int fireFrequency_, int[] projectileOrigin_) {

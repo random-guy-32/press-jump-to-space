@@ -21,7 +21,7 @@ public class GameCanvas extends Canvas {
         setFocusable(true);
     }
 
-    public void paint(Graphics g) {
+    public void render(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 

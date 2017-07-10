@@ -7,6 +7,7 @@ import pressjumptospace.entity.npc.MotionlessBlob;
 import pressjumptospace.entity.npc.RollingPlatform;
 import pressjumptospace.entity.npc.SimpleMook;
 import pressjumptospace.entity.player.Controls;
+import pressjumptospace.entity.projectile.SmallBullet;
 import pressjumptospace.main.Game;
 import pressjumptospace.tile.barrier.DownOneWayBarrier;
 import pressjumptospace.tile.barrier.LeftOneWayBarrier;
@@ -18,9 +19,8 @@ import pressjumptospace.tile.liquid.AcidSurface;
 import pressjumptospace.tile.liquid.BlueGoo;
 import pressjumptospace.tile.liquid.GreenGoo;
 import pressjumptospace.tile.meta.Tile;
-import pressjumptospace.tile.meta.TileDataContainer;
-import pressjumptospace.tile.meta.TileWithDataContainer;
-import pressjumptospace.tile.meta.Turret;
+import pressjumptospace.tile.meta.tile_data.TileDataContainer;
+import pressjumptospace.tile.meta.tile_data.TileWithDataContainer;
 import pressjumptospace.tile.misc.DecorativeMetalTile;
 import pressjumptospace.tile.misc.DecorativeMetalTile2;
 import pressjumptospace.tile.misc.Pedestal;
@@ -122,6 +122,7 @@ public class Level {
         Level.entityset.add(MotionlessBlob.class);
         Level.entityset.add(LevelObjective.class);
         Level.entityset.add(Battery.class);
+        Level.entityset.add(SmallBullet.class);
     }
     public static void addSpawnpoint(int x, int y) {
         Spawnpoint.x = x;

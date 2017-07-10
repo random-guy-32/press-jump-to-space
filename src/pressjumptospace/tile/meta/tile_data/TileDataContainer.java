@@ -1,6 +1,7 @@
-package pressjumptospace.tile.meta;
+package pressjumptospace.tile.meta.tile_data;
 
 import pressjumptospace.level.Level;
+import pressjumptospace.tile.meta.Tile;
 
 import java.util.HashMap;
 

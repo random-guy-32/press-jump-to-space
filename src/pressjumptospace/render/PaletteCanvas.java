@@ -13,11 +13,12 @@ import java.awt.*;
 import java.awt.Canvas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteCanvas extends Canvas {
+public class  PaletteCanvas extends Canvas {
     public PaletteCanvas(int objWidth_, int objHeight_) throws IOException {
         super();
         objWidth = objWidth_;
@@ -30,7 +31,7 @@ public class PaletteCanvas extends Canvas {
     public static List<Tile> tiles = new ArrayList<Tile>();
     public static List<EntitySpawner> spawners = new ArrayList<EntitySpawner>();
 
-    public void paint(Graphics g) {
+    public void render(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
 

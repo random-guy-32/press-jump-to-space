@@ -1,10 +1,8 @@
-package pressjumptospace.tile.tileentity;
+package pressjumptospace.tile.tile_entity;
 
 import pressjumptospace.entity.meta.Entity;
-import pressjumptospace.entity.meta.Projectile;
-import pressjumptospace.entity.projectile.SmallBullet;
 import pressjumptospace.tile.meta.Tile;
-import pressjumptospace.tile.meta.TileDataContainer;
+import pressjumptospace.tile.meta.tile_data.TileDataContainer;
 import pressjumptospace.util.Util;
 
 public class TurretTileDataContainer extends TileDataContainer {
