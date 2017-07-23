@@ -7,35 +7,94 @@ import pressjumptospace.level.Spawnpoint;
 
 import java.io.*;
 
+/**
+ * Saves and loads level files.
+ *
+ * @author Charlotte Buff
+ * @version 1.4.3
+ */
 
 public class FileManager {
+    /**
+     * Root for all file locations.
+     */
     public static final String ROOT = System.getProperty("user.dir") + FileManager.SAVESLOCATION;
+
+    /**
+     * Default file extension for level files.
+     */
     public static final String FILEEXTENSION = ".pjtslvl";
+
+    /**
+     * Current version number of save file format.
+     * Used as a security measure to prevent loading of files created with potentially incompatible formatting.
+     */
     public static final byte FORMATVER = 7;
+
+    /**
+     * Latest version number of save file format that is still supported by the current iteration of the game.
+     */
     public static final byte LEGACYFORMAT = 7;
 
+    /**
+     * Token for a completely empty chunk in the save format.
+     *
+     * @see Chunk
+     */
     public static final short EMPTYCHUNK = -1;
+
+    /**
+     * Token for a row of eight air tiles in the save format.
+     */
     public static final short EMPTYROW8 = -2;
+
+    /**
+     * Multiplication operator for compressing data in the save format.
+     */
     public static final short MULTIPLIER = -3;
+
+    /**
+     * Data separator in the save format.
+     * Used as a safety measure.
+     */
     public static final short SEPARATOR = -16;
+
+    /**
+     * EOF sign for the save format.
+     * Used as a safety measure.
+     */
     public static final short ENDOFFILE = -32;
 
+    /**
+     * Default save location of level files.
+     */
     public static final String SAVESLOCATION = "\\_data\\saves\\";
 
+    /**
+     * Saves the currently open level as a file to disk.
+     *
+     * @param fileName The name of the save file, without the extension.
+     * @throws IOException This is apparently necessary.
+     */
     public static void save(String fileName) throws IOException {
+        // Debug message.
         Util.log("Saving file as: " + ROOT + fileName + FILEEXTENSION);
+
+        // Creates a new virtual file.
         File file = new File(ROOT + fileName + FILEEXTENSION);
+
+        // IDEA tells me that this entire code block does nothing. 🤷
         if (!file.exists()) {
             file.mkdirs();
             file.delete();
             file.createNewFile();
         }
 
-        // exactly
+        // Yes.
         DataOutputStream dataStream = new DataOutputStream(new FileOutputStream(file, false));
 
-        // first byte of data is save file format version
-        // may be useful in the future
+        // First byte of data is save file format version.
+        // May be useful in the future.
         dataStream.writeByte(FORMATVER);
 		
 		/* == TILE DATA == */
@@ -174,12 +233,6 @@ public class FileManager {
                                 try {
                                     chunk.addSpawner(j, new EntitySpawner(Level.entityset.get(spawnerData).getName(), ((i % 7) * 128) + ((j % 8) * 16), ((i / 7) * 128) + ((j / 8) * 16)));
                                 }
-
-                                /*
-                                ((i % 8) * 128) + ((j % 8) * 16)
-                                ((i / 8) * 128) + ((j / 8) * 16)
-                                */
-
 
                                 catch(InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                                     Util.err("Encountered illegal entity ID whilst reading save file.");
