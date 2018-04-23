@@ -112,6 +112,7 @@ public class Util {
 
     /**
      * Generates a random integer between two boundaries.
+     *
      * @param lower Lower boundary (inclusive).
      * @param upper Upper boundary (exclusive).
      * @return Random integer.

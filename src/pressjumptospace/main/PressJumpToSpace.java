@@ -21,7 +21,7 @@ import java.awt.BorderLayout;
  * Wrapper class for initialization and stuffz.
  *
  * @author Charlotte Buff
- * @version 1.4.3
+ * @version 1.4.3a
  */
 
 public class PressJumpToSpace {
@@ -29,7 +29,7 @@ public class PressJumpToSpace {
      * Current version number of the game.
      * Used in the frame title.
      */
-    public static final String version = "1.4.3";
+    public static final String version = "1.4.3a";
 
     /**
      * Main function and things.
