@@ -1,7 +1,8 @@
-package pressjumptospace.menu;
+package pressjumptospace.menu_old;
 
 import javax.swing.*;
 
+@Deprecated
 public class MenuFrame extends JFrame {
     public MenuFrame(String title_) {
         super(title_);

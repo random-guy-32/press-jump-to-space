@@ -1,7 +1,7 @@
 package pressjumptospace.entity.player;
 
 import pressjumptospace.main.Game;
-import pressjumptospace.menu.Console;
+import pressjumptospace.menu_old.Console;
 import pressjumptospace.render.Screen;
 import pressjumptospace.util.FileManager;
 import pressjumptospace.util.Util;
@@ -37,7 +37,7 @@ public class Controls extends KeyAdapter {
             Game.toggleMode();
         }
         // SCREEN MOVING
-        if (Game.mode == 0) {
+        if (Game.gameMode == 0) {
             if (e.getKeyCode() == Controls.SCREENUP) {
                 Screen.moveScreen('y', -Screen.scrollAmount);
             }

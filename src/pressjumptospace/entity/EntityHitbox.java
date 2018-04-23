@@ -157,8 +157,8 @@ public class EntityHitbox extends Hitbox {
                         }
                     }
 
-                    if (downE + i > Game.OBJHEIGHT) {
-                        distance = Game.OBJHEIGHT;
+                    if (downE + i > Game.LEVEL_HEIGHT) {
+                        distance = Game.LEVEL_HEIGHT;
                     }
                 }
 
@@ -185,7 +185,7 @@ public class EntityHitbox extends Hitbox {
                     }
 
                     if (leftE - i < 0) {
-                        distance = Game.OBJWIDTH;
+                        distance = Game.LEVEL_WIDTH;
                     }
                 }
 
@@ -214,7 +214,7 @@ public class EntityHitbox extends Hitbox {
                     }
 
                     if (upE - i < 0) {
-                        distance = Game.OBJHEIGHT;
+                        distance = Game.LEVEL_HEIGHT;
                     }
                 }
 
@@ -240,8 +240,8 @@ public class EntityHitbox extends Hitbox {
                         }
                     }
 
-                    if (rightE + i > Game.OBJWIDTH) {
-                        distance = Game.OBJWIDTH;
+                    if (rightE + i > Game.LEVEL_WIDTH) {
+                        distance = Game.LEVEL_WIDTH;
                     }
                 }
 

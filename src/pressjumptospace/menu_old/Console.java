@@ -1,4 +1,4 @@
-package pressjumptospace.menu;
+package pressjumptospace.menu_old;
 
 import javax.swing.*;
 
@@ -9,6 +9,7 @@ import javax.swing.*;
  * @version 1.4.3
  */
 
+@Deprecated
 public class Console {
     /**
      * The frame that holds the console.

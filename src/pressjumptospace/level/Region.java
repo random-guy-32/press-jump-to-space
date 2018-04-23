@@ -12,7 +12,7 @@ public class Region {
         chunks = new Chunk[Region.totalChunks];
     }
 
-    public static final int totalChunks = (Game.OBJWIDTH / 128) * (Game.OBJHEIGHT / 128);
+    public static final int totalChunks = (Game.LEVEL_WIDTH / 128) * (Game.LEVEL_HEIGHT / 128);
     public Chunk[] chunks;
     public int x;
     public int y;
@@ -42,7 +42,7 @@ public class Region {
         return this.chunks[i];
     }
     public Chunk getChunk(int x, int y) {
-        return this.getChunk(y * (Game.OBJWIDTH / 128) + x);
+        return this.getChunk(y * (Game.LEVEL_WIDTH / 128) + x);
     }
 
     public void initiateChunks() {

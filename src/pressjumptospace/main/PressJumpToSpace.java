@@ -3,9 +3,9 @@ package pressjumptospace.main;
 
 import pressjumptospace.entity.player.Player;
 import pressjumptospace.level.Level;
-import pressjumptospace.menu.Console;
-import pressjumptospace.menu.MenuFrame;
-import pressjumptospace.menu.MetaMenu;
+import pressjumptospace.menu_old.Console;
+import pressjumptospace.menu_old.MenuFrame;
+import pressjumptospace.menu_old.MetaMenu;
 import pressjumptospace.render.GameCanvas;
 import pressjumptospace.render.PaletteCanvas;
 
@@ -18,10 +18,10 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
 /**
- * Wrapper class for initialization and stuffz.
+ * Wrapper (?) class for initialization and stuffz.
  *
  * @author Charlotte Buff
- * @version 1.4.3a
+ * @version 1.5
  */
 
 public class PressJumpToSpace {
@@ -29,7 +29,7 @@ public class PressJumpToSpace {
      * Current version number of the game.
      * Used in the frame title.
      */
-    public static final String version = "1.4.3a";
+    public static final String version = "1.5";
 
     /**
      * Main function and things.
@@ -51,6 +51,10 @@ public class PressJumpToSpace {
         // Main canvas for the game field to render.
         // For some reason the player character is saved as part of the canvas.
         GameCanvas gameCanvas = new GameCanvas(new Player(0, 0, (byte) 0, 1));
+
+
+
+
 
         // Palette window and canvas.
         JFrame paletteFrame = new JFrame("Tiles");
@@ -80,11 +84,14 @@ public class PressJumpToSpace {
 
         // Setting main canvas's size and position to the desired dimensions.
         gameFrame.setResizable(true);
-        gameCanvas.setPreferredSize(new Dimension(Game.OBJWIDTH, Game.OBJHEIGHT));
+        gameCanvas.setPreferredSize(new Dimension(Game.LEVEL_WIDTH, Game.LEVEL_HEIGHT));
         gameFrame.setResizable(false);
         gameFrame.pack();   // Very important.
         gameFrame.setLocation(10, 10);
         gameFrame.setVisible(true);
+
+        gameCanvas.guiRoot.width = gameCanvas.getWidth();
+        gameCanvas.guiRoot.height = gameCanvas.getHeight();
 
         // Doing the same thing for the palette window.
         paletteFrame.getContentPane().add(paletteCanvas);
@@ -92,12 +99,12 @@ public class PressJumpToSpace {
         paletteCanvas.setPreferredSize(new Dimension(paletteCanvas.objWidth, paletteCanvas.objHeight));
         paletteFrame.setResizable(false);
         paletteFrame.pack();
-        paletteFrame.setLocation(30 + Game.OBJWIDTH, 10);
+        paletteFrame.setLocation(30 + Game.LEVEL_WIDTH, 10);
         paletteFrame.setVisible(true);
 
         // And for the menu window.
         metaMenu.menuFrame.setSize(MenuFrame.objWidth, MenuFrame.objHeight);
-        metaMenu.menuFrame.setLocation(30 + Game.OBJWIDTH, 20 + paletteFrame.getHeight());
+        metaMenu.menuFrame.setLocation(30 + Game.LEVEL_WIDTH, 20 + paletteFrame.getHeight());
         metaMenu.menuFrame.setResizable(true);
         metaMenu.menuFrame.setVisible(true);
 

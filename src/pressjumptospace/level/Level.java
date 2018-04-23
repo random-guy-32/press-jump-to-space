@@ -39,7 +39,7 @@ public class Level {
 
     public static List <Region> regions = new ArrayList<Region>();
 
-    public static final int totalChunks = (Game.OBJWIDTH / 128) * (Game.OBJHEIGHT / 128);
+    public static final int totalChunks = (Game.LEVEL_WIDTH / 128) * (Game.LEVEL_HEIGHT / 128);
     public static Chunk[] chunks = new Chunk[Level.totalChunks];
 
     public static Tile getTile(int x, int y) {
@@ -74,7 +74,7 @@ public class Level {
         return Level.chunks[i];
     }
     public static Chunk getChunk(int x, int y) {
-        return Level.getChunk(y * (Game.OBJWIDTH / 128) + x);
+        return Level.getChunk(y * (Game.LEVEL_WIDTH / 128) + x);
     }
 
     public static void initiateChunks() {

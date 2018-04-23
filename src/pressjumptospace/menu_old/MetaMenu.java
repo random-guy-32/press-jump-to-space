@@ -1,4 +1,4 @@
-package pressjumptospace.menu;
+package pressjumptospace.menu_old;
 
 import pressjumptospace.main.Game;
 
@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 // the only interface you will be seeing in this program
+@Deprecated
 public class MetaMenu implements ActionListener {
     // this is disgusting
     public Hashtable<String, String> help;

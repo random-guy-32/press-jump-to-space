@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="pressjumptospace1.4.2_a">
-    <output-path>$PROJECT_DIR$/out/artifacts/pressjumptospace1_4_2_a</output-path>
-    <root id="archive" name="pressjumptospace1.4.2_a.jar">
+  <artifact type="jar" build-on-make="true" name="pressjumptospace1.5">
+    <output-path>$PROJECT_DIR$/out/artifacts/pressjumptospace1_5</output-path>
+    <root id="archive" name="pressjumptospace1.5.jar">
       <element id="module-output" name="PressJumpToSpace" />
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />

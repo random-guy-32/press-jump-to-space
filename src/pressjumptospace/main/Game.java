@@ -11,7 +11,7 @@ import pressjumptospace.entity.meta.NPC;
 import pressjumptospace.level.Chunk;
 import pressjumptospace.level.Level;
 import pressjumptospace.level.LevelEditor;
-import pressjumptospace.menu.Console;
+import pressjumptospace.menu_old.Console;
 import pressjumptospace.render.GameCanvas;
 import pressjumptospace.render.PaletteCanvas;
 import pressjumptospace.tile.meta.LiquidTile;
@@ -26,7 +26,7 @@ import java.awt.image.BufferedImage;
  * All the important game stuff happens here.
  *
  * @author Charlotte Buff
- * @version 1.4.3
+ * @version 1.5
  */
 
 public abstract class Game {
@@ -56,17 +56,23 @@ public abstract class Game {
      * Current game mode.
      * 0 = editing; 1 = playing.
      */
-    public static byte mode = 0;
+    public static byte gameMode = 0;
+
+    /**
+     * Current menu status.
+     * 0 = main menu visible.
+     */
+    public static byte menuMode = 0;
 
     /**
      * Width of the playing field.
      */
-    public static final int OBJWIDTH = 896;
+    public static final int LEVEL_WIDTH = 896;
 
     /**
      * Height of the playing field.
      */
-    public static final int OBJHEIGHT = 512;
+    public static final int LEVEL_HEIGHT = 512;
 
     /**
      * Main window.
@@ -127,7 +133,7 @@ public abstract class Game {
             gameCanvas.cursor = gameCanvas.getMousePosition();
 
             // If the game is in editing mode and the mouse cursor is within the bounds of the main window...
-            if (Game.mode == 0 && gameCanvas.cursor != null) {
+            if (Game.gameMode == 0 && gameCanvas.cursor != null) {
                 // editing mode
                 if (LevelEditor.selectedTile != null) {
                     // If a tile has been selected from the palette, an image of it is rendered stuck to the cursor.
@@ -166,7 +172,7 @@ public abstract class Game {
                 }
             }
             // If the game is in playing mode...
-            else if (Game.mode == 1) {
+            else if (Game.gameMode == 1) {
                 // playing mode
 
                 // For all entities that are currently active on the playing field...
@@ -175,7 +181,7 @@ public abstract class Game {
                     Entity entity = Level.entities.get(i);
 
                     // If the entity is completely below the lower border of the canvas, kill it.
-                    if (entity.y > Game.OBJHEIGHT + 16) {
+                    if (entity.y > Game.LEVEL_HEIGHT + 16) {
                         entity.kill();
                     }
 
@@ -281,7 +287,7 @@ public abstract class Game {
 
             // If the game is in editing mode, the palette also renders a new frame.
             // The palette window is hidden in playing mode, so no ressources are wasted.
-            if (mode == 0) {
+            if (gameMode == 0) {
                 renderPalette(bufferGraphicsPalette, bufferImagePalette, gPalette);
             }
 
@@ -338,7 +344,7 @@ public abstract class Game {
      * Switches between editing mode (0) and playing mode (1).
      */
     public static void toggleMode() {
-        if (Game.mode == 0) {
+        if (Game.gameMode == 0) {
             // Changing from editor mode to play mode.
             Game.changeMode((byte) 1);
         } else {
@@ -353,9 +359,9 @@ public abstract class Game {
      * @param mode_ 0 = editing; 1 = playing.
      */
     public static void changeMode(byte mode_) {
-        Game.mode = mode_;
+        Game.gameMode = mode_;
 
-        switch (Game.mode) {
+        switch (Game.gameMode) {
             case 0:
                 // Changing to editing mode.
                 // The palette window becomes visible again.

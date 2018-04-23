@@ -1,7 +1,8 @@
-package pressjumptospace.menu;
+package pressjumptospace.menu_old;
 
 import java.util.Hashtable;
 
+@Deprecated
 public class Help {
     // public static final String NEWLINE = System.getProperty("line.separator");
     public Help() {

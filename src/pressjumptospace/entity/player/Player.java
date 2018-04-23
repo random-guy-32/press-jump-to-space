@@ -5,10 +5,7 @@ import pressjumptospace.entity.meta.HealthUpgrade;
 import pressjumptospace.entity.meta.Item;
 import pressjumptospace.level.Level;
 import pressjumptospace.level.Spawnpoint;
-import pressjumptospace.menu.Console;
-import pressjumptospace.util.Util;
-
-import java.awt.*;
+import pressjumptospace.menu_old.Console;
 
 public class Player extends Entity {
     public Player(int x_, int y_, byte dir_, int health_) {
